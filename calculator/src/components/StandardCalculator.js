@@ -19,7 +19,7 @@ function StandardCalculator(props) {
   }
 
   function handleOnClickOperator(e) {
-    if (!operator) setoperator(e);
+    setoperator(e);
     if (!firstValue) setfirstValue(Number(textValue));
     setTextValue("");
   }
@@ -34,6 +34,7 @@ function StandardCalculator(props) {
     if (operator === "*") result = firstValue * secondValue;
 
     setTextValue(result);
+    setfirstValue(result);
   }
   return (
     <div className="main">
@@ -69,6 +70,14 @@ function StandardCalculator(props) {
           <AppButton value="0" onClick={handleOnClick} />
           <AppButton value="=" onClick={handleResult} />
           <AppButton value="*" onClick={handleOnClickOperator} />
+        </div>
+        <div className="row">
+          {firstValue && (
+            <input className="textInput" disabled value={firstValue} />
+          )}
+          {operator && (
+            <input className="textInput" disabled value={operator} />
+          )}
         </div>
       </section>
       <div></div>

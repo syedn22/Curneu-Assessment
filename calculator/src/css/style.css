@@ -10,11 +10,20 @@
 }
 
 .textArea {
-  width: 350px;
+  width: 550px;
   height: 100px;
-  font-size: 40px;
+  font-size: 50px;
   border-radius: 10px;
   font-weight: bold;
+}
+
+.textInput {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-right: 20px;
 }
 
 .main {
