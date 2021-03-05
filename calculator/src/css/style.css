@@ -1,0 +1,35 @@
+.button {
+  width: 70px;
+  height: 70px;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 24px;
+  margin: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.textArea {
+  width: 350px;
+  height: 100px;
+  font-size: 40px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
