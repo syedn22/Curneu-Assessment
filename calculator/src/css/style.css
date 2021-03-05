@@ -1,7 +1,18 @@
 .button {
-  width: 70px;
+  width: 100px;
   height: 70px;
   background-color: dodgerblue;
+  color: white;
+  font-size: 24px;
+  margin: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.equalButton{
+  width: 340px;
+  height: 70px;
+  background-color: tomato;
   color: white;
   font-size: 24px;
   margin: 10px;
@@ -19,7 +30,7 @@
 
 .textInput {
   width: 200px;
-  height: 50px;
+  height: 70px;
   font-size: 20px;
   border-radius: 10px;
   font-weight: bold;

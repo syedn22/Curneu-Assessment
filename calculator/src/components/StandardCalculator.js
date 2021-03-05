@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/style.css";
 
 import AppButton from "../components/common/AppButton";
+import Calculator from "../source/Calculator";
 
 function StandardCalculator(props) {
   const [textValue, setTextValue] = useState("");
@@ -18,23 +19,22 @@ function StandardCalculator(props) {
     setTextValue(value);
   }
 
-  function handleOnClickOperator(e) {
-    setoperator(e);
-    if (!firstValue) setfirstValue(Number(textValue));
-    setTextValue("");
-  }
-
   function handleResult(e) {
-    const secondValue = Number(textValue);
-    let result = 0;
-
-    if (operator === "+") result = firstValue + secondValue;
-    if (operator === "-") result = firstValue - secondValue;
-    if (operator === "/") result = firstValue / secondValue;
-    if (operator === "*") result = firstValue * secondValue;
-
+    const postfix = Calculator.infixToPostfix(textValue);
+    console.log(postfix);
+    if (postfix === "Invalid Expression") {
+      return setTextValue("Error");
+    }
+    const result = Calculator.evaluatePostfix(postfix);
+    if (isNaN(result)) return setTextValue("Error");
     setTextValue(result);
     setfirstValue(result);
+  }
+
+  function handleReset() {
+    setTextValue("");
+    setfirstValue(null);
+    setoperator(null);
   }
   return (
     <div className="main">
@@ -45,33 +45,37 @@ function StandardCalculator(props) {
           value={textValue}
           onChange={handleOnChange}
           placeholder="0"
+          disabled
         />
 
         <div className="row">
           <AppButton value="1" onClick={handleOnClick} />
           <AppButton value="2" onClick={handleOnClick} />
           <AppButton value="3" onClick={handleOnClick} />
-          <AppButton value="/" onClick={handleOnClickOperator} />
+          <AppButton value="(" onClick={handleOnClick} />
+          <AppButton value=" / " onClick={handleOnClick} />
         </div>
         <div className="row">
           <AppButton value="4" onClick={handleOnClick} />
           <AppButton value="5" onClick={handleOnClick} />
           <AppButton value="6" onClick={handleOnClick} />
-          <AppButton value="+" onClick={handleOnClickOperator} />
+          <AppButton value=")" onClick={handleOnClick} />
+          <AppButton value=" + " onClick={handleOnClick} />
         </div>
         <div className="row">
           <AppButton value="7" onClick={handleOnClick} />
           <AppButton value="8" onClick={handleOnClick} />
           <AppButton value="9" onClick={handleOnClick} />
-          <AppButton value="-" onClick={handleOnClickOperator} />
+          <AppButton value=" - " onClick={handleOnClick} />
+          <AppButton value=" * " onClick={handleOnClick} />
         </div>
         <div className="row">
           <AppButton value="." onClick={handleOnClick} />
           <AppButton value="0" onClick={handleOnClick} />
-          <AppButton value="=" onClick={handleResult} />
-          <AppButton value="*" onClick={handleOnClickOperator} />
+          <AppButton value="=" className="equalButton" onClick={handleResult} />
         </div>
         <div className="row">
+          <AppButton value="Reset" onClick={handleReset} />
           {firstValue && (
             <input className="textInput" disabled value={firstValue} />
           )}
