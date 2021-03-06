@@ -20,13 +20,7 @@ function StandardCalculator(props) {
   }
 
   function handleResult(e) {
-    const postfix = Calculator.infixToPostfix(textValue);
-    console.log(postfix);
-    if (postfix === "Invalid Expression") {
-      return setTextValue("Error");
-    }
-    const result = Calculator.evaluatePostfix(postfix);
-    if (isNaN(result)) return setTextValue("Error");
+    const result = Calculator.calculate(textValue);
     setTextValue(result);
     setfirstValue(result);
   }
@@ -38,7 +32,6 @@ function StandardCalculator(props) {
   }
   return (
     <div className="main">
-      <h1>Standard Calculator</h1>
       <section className="column">
         <input
           className="textArea"

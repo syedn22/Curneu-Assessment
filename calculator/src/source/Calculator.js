@@ -1,111 +1,79 @@
+import exactMath from "exact-math";
+
+const customError = new Error("Invalid");
+const config = { invalidError: customError };
+
 export default class Calculator {
-  static Prec(ch) {
-    switch (ch) {
-      case "+":
-      case "-":
-        return 1;
-
-      case "*":
-      case "/":
-        return 2;
-
-      case "^":
-        return 3;
-      default:
-        return -1;
-    }
-  }
-
-  static infixToPostfix(exp) {
+  static calculate(exp) {
     let result = "";
-
-    let stack = [];
-
-    for (let i = 0; i < exp.length; ++i) {
-      let c = exp.charAt(i);
-
-      if (c === " ") continue;
-      else if (c >= "0" && c <= "9") {
-        let n = 0;
-
-        while (c >= "0" && c <= "9") {
-          n = n * 10 + parseInt(c - "0");
-          i++;
-          c = exp.charAt(i);
-        }
-        i--;
-
-        result += " ";
-        result += n;
-      } else if (c === "(") stack.push(c);
-      else if (c === ")") {
-        while (!(stack.length === 0) && stack[stack.length - 1] !== "(") {
-          result += " ";
-          result += stack.pop();
-        }
-
-        stack.pop();
-      } else {
-        while (
-          !(stack.length === 0) &&
-          Calculator.Prec(c) <= Calculator.Prec(stack[stack.length - 1])
-        ) {
-          result += " ";
-          result += stack.pop();
-        }
-        stack.push(c);
-      }
+    try {
+      result = exactMath.formula(exp, config);
+    } catch (e) {
+      result = e.message;
     }
 
-    while (!(stack.length === 0)) {
-      if (stack[stack.length - 1] === "(") return "Invalid Expression";
-      result += " ";
-      result += stack.pop();
-    }
     return result;
   }
 
-  static evaluatePostfix(exp) {
-    let stack = [];
-    for (let i = 0; i < exp.length; i++) {
-      let c = exp.charAt(i);
+  static mathFunction(e, value) {
+    switch (e) {
+      case "sin":
+        return Math.sin(Number(value));
+      case "cos":
+        return Math.cos(Number(value));
 
-      if (c === " ") continue;
-      else if (c >= "0" && c <= "9") {
-        let n = 0;
+      case "tan":
+        return Math.tan(Number(value));
 
-        while (c >= "0" && c <= "9") {
-          n = n * 10 + parseInt(c - "0");
-          i++;
-          c = exp.charAt(i);
-        }
-        i--;
+      case "1/tan":
+        return 1 / Math.tan(Number(value));
 
-        stack.push(n);
-      } else {
-        let firstOperand = stack.pop();
-        let secondOperand = stack.pop();
+      case "1/sin":
+        return 1 / Math.sin(Number(value));
 
-        switch (c) {
-          case "+":
-            stack.push(secondOperand + firstOperand);
-            break;
+      case "1/cos":
+        return 1 / Math.cos(Number(value));
 
-          case "-":
-            stack.push(secondOperand - firstOperand);
-            break;
+      case "log":
+        return Math.log10(Number(value));
 
-          case "/":
-            stack.push(secondOperand / firstOperand);
-            break;
+      case "ln":
+        return Math.log(Number(value));
 
-          case "*":
-            stack.push(secondOperand * firstOperand);
-            break;
-        }
-      }
+      case "x^2":
+        return Math.pow(Number(value), 2);
+
+      case "x^3":
+        return Math.pow(Number(value), 3);
+
+      case "10^x":
+        return Math.pow(10, Number(value));
+
+      case "e^x":
+        return Math.pow(Math.E, Number(value));
+
+      case "1/x":
+        return 1 / Number(value);
+
+      case "√x":
+        return Math.sqrt(Number(value));
+
+      case "3√x":
+        return Math.cbrt(Number(value));
+
+      case "n!":
+        return Calculator.factorial(Number(value));
     }
-    return stack.pop();
+
+    return NaN;
+  }
+
+  static factorial(num) {
+    let fac = 1;
+    for (let i = 1; i <= num; i++) {
+      fac *= i;
+    }
+
+    return fac;
   }
 }
-

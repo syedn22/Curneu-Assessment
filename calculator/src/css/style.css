@@ -1,31 +1,40 @@
 .button {
   width: 100px;
-  height: 70px;
-  background-color: dodgerblue;
+  height: 100px;
+  background-color: #f48c06;
   color: white;
   font-size: 24px;
   margin: 10px;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 50px;
 }
 
-.equalButton{
-  width: 340px;
-  height: 70px;
+.equalButton {
+  background-color: #0ead69;
+  color: #000;
+}
+
+.yellow{
+  background-color: #ffba08;
+  color: #000;
+}
+
+.gray{
+  background-color: #8d99ae;
+  color: #000;
+}
+
+.red{
   background-color: tomato;
-  color: white;
-  font-size: 24px;
-  margin: 10px;
-  font-weight: bold;
-  border-radius: 10px;
 }
 
 .textArea {
-  width: 550px;
+  width: 750px;
   height: 100px;
   font-size: 50px;
   border-radius: 10px;
   font-weight: bold;
+  color: white;
 }
 
 .textInput {
@@ -35,6 +44,7 @@
   border-radius: 10px;
   font-weight: bold;
   margin-right: 20px;
+  color: white;
 }
 
 .main {
@@ -42,6 +52,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .row {
