@@ -68,6 +68,10 @@ export default class Calculator {
     return NaN;
   }
 
+  static getBaseLog(x, y) {
+    return Math.log(y) / Math.log(x);
+  }
+
   static factorial(num) {
     let fac = 1;
     for (let i = 1; i <= num; i++) {

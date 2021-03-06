@@ -14,17 +14,17 @@
   color: #000;
 }
 
-.yellow{
+.yellow {
   background-color: #ffba08;
   color: #000;
 }
 
-.gray{
+.gray {
   background-color: #8d99ae;
   color: #000;
 }
 
-.red{
+.red {
   background-color: tomato;
 }
 
@@ -63,4 +63,13 @@
 .column {
   display: flex;
   flex-direction: column;
+}
+
+.column-keypad {
+  /* display: flex; */
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  /* align-content: center; */
+  width: 900px;
 }

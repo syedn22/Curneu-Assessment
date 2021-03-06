@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import "../css/style.css";
 
-import AppButton from "../components/common/AppButton";
 import Calculator from "../source/Calculator";
+import KeyPad from "../components/common/KeyPad";
 
 function StandardCalculator(props) {
   const [textValue, setTextValue] = useState("");
-  const [firstValue, setfirstValue] = useState(null);
-  const [operator, setoperator] = useState(null);
 
   function handleOnClick(value) {
     if (textValue === "0") return setTextValue(value);
@@ -22,17 +20,19 @@ function StandardCalculator(props) {
   function handleResult(e) {
     const result = Calculator.calculate(textValue);
     setTextValue(result);
-    setfirstValue(result);
   }
 
   function handleReset() {
     setTextValue("");
-    setfirstValue(null);
-    setoperator(null);
+  }
+
+  function handleBack() {
+    const result = textValue.substring(0, textValue.length - 1);
+    setTextValue(result);
   }
   return (
     <div className="main">
-      <section className="column">
+      <section>
         <input
           className="textArea"
           value={textValue}
@@ -41,41 +41,12 @@ function StandardCalculator(props) {
           disabled
         />
 
-        <div className="row">
-          <AppButton value="1" onClick={handleOnClick} />
-          <AppButton value="2" onClick={handleOnClick} />
-          <AppButton value="3" onClick={handleOnClick} />
-          <AppButton value="(" onClick={handleOnClick} />
-          <AppButton value=" / " onClick={handleOnClick} />
-        </div>
-        <div className="row">
-          <AppButton value="4" onClick={handleOnClick} />
-          <AppButton value="5" onClick={handleOnClick} />
-          <AppButton value="6" onClick={handleOnClick} />
-          <AppButton value=")" onClick={handleOnClick} />
-          <AppButton value=" + " onClick={handleOnClick} />
-        </div>
-        <div className="row">
-          <AppButton value="7" onClick={handleOnClick} />
-          <AppButton value="8" onClick={handleOnClick} />
-          <AppButton value="9" onClick={handleOnClick} />
-          <AppButton value=" - " onClick={handleOnClick} />
-          <AppButton value=" * " onClick={handleOnClick} />
-        </div>
-        <div className="row">
-          <AppButton value="." onClick={handleOnClick} />
-          <AppButton value="0" onClick={handleOnClick} />
-          <AppButton value="=" className="equalButton" onClick={handleResult} />
-        </div>
-        <div className="row">
-          <AppButton value="Reset" onClick={handleReset} />
-          {firstValue && (
-            <input className="textInput" disabled value={firstValue} />
-          )}
-          {operator && (
-            <input className="textInput" disabled value={operator} />
-          )}
-        </div>
+        <KeyPad
+          handleBack={handleBack}
+          handleOnClick={handleOnClick}
+          handleResult={handleResult}
+          handleReset={handleReset}
+        />
       </section>
       <div></div>
     </div>
