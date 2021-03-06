@@ -5,15 +5,17 @@ import "../css/Navbar.css";
 function Navbar(props) {
   return (
     <nav className="container">
-      {/* <p>Calculator</p> */}
-      <ul className="list">
-        <li className="list-item">
+      <ul>
+        <li className="heading">
+          Calculator
+        </li>
+        <li>
           <Link to="/">Standard</Link>
         </li>
-        <li className="list-item">
+        <li>
           <Link to="/scientific">Scientific</Link>
         </li>
-        <li className="list-item">
+        <li>
           <Link to="/date">Date</Link>
         </li>
       </ul>

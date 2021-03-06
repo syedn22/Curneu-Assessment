@@ -5,8 +5,8 @@ import AppButton from "./AppButton";
 
 function ScientificKeypad({ handleMathFunction, handleTrignometryFunction }) {
   return (
-    <>
-      <div className="row">
+    <div className="column">
+      <div>
         <AppButton
           value="sin"
           className="yellow"
@@ -25,7 +25,7 @@ function ScientificKeypad({ handleMathFunction, handleTrignometryFunction }) {
         <AppButton value="e" className="gray" onClick={handleMathFunction} />
       </div>
 
-      <div className="row">
+      <div>
         <AppButton
           value="1/sin"
           className="yellow"
@@ -44,7 +44,7 @@ function ScientificKeypad({ handleMathFunction, handleTrignometryFunction }) {
         <AppButton value="π" className="gray" onClick={handleMathFunction} />
       </div>
 
-      <div className="row">
+      <div>
         <AppButton
           value="e^x"
           className="gray"
@@ -67,8 +67,8 @@ function ScientificKeypad({ handleMathFunction, handleTrignometryFunction }) {
         />
       </div>
 
-      <div className="row">
-        <AppButton value="1/x" onClick={handleTrignometryFunction} />
+      <div>
+        <AppButton value="1/x" className="gray" onClick={handleTrignometryFunction} />
         <AppButton
           value="√x"
           className="gray"
@@ -86,7 +86,7 @@ function ScientificKeypad({ handleMathFunction, handleTrignometryFunction }) {
           onClick={handleTrignometryFunction}
         />
       </div>
-      <div className="row">
+      <div>
         <AppButton
           value="log"
           className="gray"
@@ -98,7 +98,7 @@ function ScientificKeypad({ handleMathFunction, handleTrignometryFunction }) {
           onClick={handleTrignometryFunction}
         />
       </div>
-    </>
+    </div>
   );
 }
 
