@@ -78,7 +78,7 @@ function ScientificCalculator(props) {
           <input className="textInput" disabled value={firstValue} />
         )}
       </div>
-      <div className="row">
+      <div className="keypad-row">
         <KeyPad
           handleBack={handleBack}
           handleOnClick={handleOnClick}

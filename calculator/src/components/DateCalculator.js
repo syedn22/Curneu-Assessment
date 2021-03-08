@@ -31,22 +31,27 @@ const DateCalculator = () => {
   }
   return (
     <div className="main">
-      <h2>From Date</h2>
-      <DatePicker
-        className="textDateInput"
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
-      <h2>To Date</h2>
-      <DatePicker
-        className="textDateInput"
-        selected={endDate}
-        onChange={(date) => setendDate(date)}
-      />
+      <div className="answer-row">
+        <h2>From Date</h2>
+        <DatePicker
+          className="textDateInput"
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
+      </div>
+      <div className="answer-row">
+        <h2>To Date</h2>
+        <DatePicker
+          className="textDateInput"
+          selected={endDate}
+          onChange={(date) => setendDate(date)}
+        />
+      </div>
+
       <br />
       <AppButton value="Answer" className="answer" onClick={handleResult} />
 
-      <div className="row">
+      <div className="answer-row">
         <input
           className="textDateInput output"
           placeholder="Seconds"
@@ -60,7 +65,7 @@ const DateCalculator = () => {
           value={result["minute"]}
         />
       </div>
-      <div className="row">
+      <div className="answer-row">
         <input
           className="textDateInput output"
           placeholder="Hours"
@@ -74,7 +79,7 @@ const DateCalculator = () => {
           value={result["day"]}
         />
       </div>
-      <div className="row">
+      <div className="answer-row">
         <input
           className="textDateInput output"
           placeholder="Months"

@@ -6,9 +6,7 @@ function Navbar(props) {
   return (
     <nav className="container">
       <ul>
-        <li className="heading">
-          Calculator
-        </li>
+        <li className="heading">Calculator</li>
         <li>
           <Link to="/">Standard</Link>
         </li>
